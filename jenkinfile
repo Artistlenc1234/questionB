@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    tools {
+   
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/username/my-repo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+              
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+             
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Build and Test completed successfully!'
+        }
+        failure {
+            echo 'Build or Test failed!'
+        }
+    }
+}
